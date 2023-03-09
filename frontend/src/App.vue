@@ -1,10 +1,12 @@
 <script >
 
   // Importing components
-  import FooterComponent from './components/FooterComponent.vue'
+  import FooterComponent from './components/FooterComponent.vue';
 
   export default {
+    // Name of the component
     name: 'App',
+    // Components
     components: {
       FooterComponent
     }
@@ -14,7 +16,8 @@
 
 
 <template>
-  
+  <!--Router-->
+  <router-view />
+  <!--Footer-->
   <FooterComponent />
-  
 </template>

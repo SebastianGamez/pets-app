@@ -29,7 +29,7 @@
 
 <template>
     <section class="main-race">
-        <div class="race-form--container bg-dark rounded border d-flex flex-column justify-content-center align-items-center">
+        <div class="race-form--container rounded border d-flex flex-column justify-content-center align-items-center">
             <div class="form-title--container">
                 <h2 class="title-title--form text-light">Añadir una raza</h2>
             </div>
@@ -71,5 +71,6 @@
         max-width: 500px;
         width: 50%;
         padding: 20px;
+        background-color: rgba(0, 0, 0, 0.596)
     }
 </style>

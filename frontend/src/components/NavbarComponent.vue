@@ -1,5 +1,5 @@
 <template>
-        <nav class="navbar navbar-dark bg-dark">
+        <nav class="navbar navbar-dark bg-dark position-absolute w-100">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">PetMix</a>
                 <ul class="nav">
@@ -28,6 +28,6 @@
   
   <script>
     export default {
-        name: 'NavbarComponent',
+      name: 'NavbarComponent',
     }
   </script>

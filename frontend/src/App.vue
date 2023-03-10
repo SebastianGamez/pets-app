@@ -2,7 +2,7 @@
 
   // Importing components
   import FooterComponent from './components/FooterComponent.vue';
-  import NavbarComponent from './components/NavbarComponent.vue';;
+  import NavbarComponent from './components/NavbarComponent.vue';
 
   export default {
     // Name of the component

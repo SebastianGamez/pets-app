@@ -3,18 +3,27 @@
 
 <script>
     // Import the components
-    import InputTextComponent from '../components/InputTextComponent.vue'
+    import InputTextComponent from '../components/InputTextComponent.vue';
+    import SelectInputComponent from '../components/SelectInputComponent.vue';
 
     export default {
         name: 'RacePage',
         components: {
-            InputTextComponent
+            InputTextComponent,
+            SelectInputComponent
         },
         data() {
             return {
-                name: ''
+                name: '',
+                type: ''
             }
         },
+        methods: {
+            getInputValue({value}) {
+                this.type = value;
+                console.log(this.type);
+            }
+        }
     }
 </script>
 
@@ -26,11 +35,18 @@
             </div>
             <form class="form-form  d-flex flex-column justify-content-center align-items-center">
                 <InputTextComponent
-                    label="Name"
-                    placeholder="Enter the name"
+                    label="Nombre"
+                    placeholder="Introduce un nombre"
                     type="text"
                     id="name"
                     v-model="name"
+                />
+                <SelectInputComponent
+                    label="Especie"
+                    id="type"
+                    placeholder="Selecciona un tipo"
+                    :options="['Perro', 'Gato']"
+                    @getInputValue="getInputValue"
                 />
                 <input class="btn btn-primary mt-3" type="submit" value="Agregar"/>                
             </form>
@@ -39,7 +55,7 @@
 </template>
 
 // Styles
-<style>
+<style scoped>
     .main-race {
         display: flex;
         justify-content: center;

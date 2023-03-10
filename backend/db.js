@@ -4,13 +4,13 @@
 //1. IMPORTO SEQUELIZE A MI PROYECTO Y LO INSTANCIO
 const Sequelize=require('sequelize');
                             //(name_DB,usuario,contraseña)
-const sequelize=new Sequelize('pet_db','root','Abc1234567890',{
-    host:'localhost',
+const sequelize=new Sequelize('heroku_93abceb55484337','b74ca5f74baad0','623373b1',{
+    host:'us-cdbr-east-06.cleardb.net',
     dialect:'mysql'
 })
 
 //2.TRAIGO MIS MODELOS PREVIAMENTE CREADOS EN UN FICHERO DE LA CARPETA MODELS.
-//NOTA: Como lo tengo definido como una función, acá debo ejecutarla pasándole los parámetros que requiere.
+//NOTA: Como lo tengo definido como una func8ión, acá debo ejecutarla pasándole los parámetros que requiere.
 
 
 
@@ -40,4 +40,5 @@ module.exports={
     Pets,
     Races,
     Users
+    
 }

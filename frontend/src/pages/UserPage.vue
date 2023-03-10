@@ -5,53 +5,50 @@
 
     // Import text input component
     import InputTextComponent from '../components/InputTextComponent.vue';
-    // Import select input component
-    import SelectInputComponent from '../components/SelectInputComponent.vue';
     // Import fetch data helper
     import fetchDataHelper from '../helpers/fetchDataHelper';
     // Import sweet alert 2
+    import Swal from 'sweetalert2';
 
     export default {
-        name: 'RacePage',
+        name: 'UserPage',
         components: {
-            InputTextComponent,
-            SelectInputComponent
+            InputTextComponent
         },
         data() {
             return {
                 name: '',
-                type: ''
+                address: '',
+                phone: '',
+                email: '',
             }
         },
         methods: {
-            // Get the value of the select input
-            getInputValue({value}) {
-                this.type = value;
-            },
             // Handle the submit event
             async handleSubmit() {
                 // Call the fetch data helper
                 const response = fetchDataHelper('', 'POST', {
                     name: this.name,
-                    type: this.type
+                    address: this.address,
+                    phone: this.phone,
+                    email: this.email
                 });
                 // Check if the response is ok
                 if(response.ok) {
                     // Show a success alert
                     Swal.fire({
                         icon: 'success',
-                        title: 'Raza añadida correctamente',
+                        title: 'Usuario añadido correctamente',
                         showConfirmButton: false,
                         timer: 1500
                     })
-                    // Redirect to the home page
-                    this.$router.push('/');
-                } else {
+                }
+                else {
                     // Show an error alert
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: 'Ha ocurrido un error al añadir la raza',
+                        text: 'Ha ocurrido un error al añadir el usuario',
                     })
                 }
 
@@ -61,10 +58,10 @@
 </script>
 
 <template>
-    <section class="main-race">
-        <div class="race-form--container rounded border d-flex flex-column justify-content-center align-items-center">
+    <section class="main-user">
+        <div class="user-form--container rounded border d-flex flex-column justify-content-center align-items-center">
             <div class="form-title--container">
-                <h2 class="title-title--form text-light">Añadir una raza</h2>
+                <h2 class="title-title--form text-light">Registrar usuario</h2>
             </div>
             <form @submit.prevent="handleSubmit" class="form-form  d-flex flex-column justify-content-center align-items-center">
                 <InputTextComponent
@@ -74,14 +71,28 @@
                     id="name"
                     v-model="name"
                 />
-                <SelectInputComponent
-                    label="Especie"
-                    id="type"
-                    placeholder="Selecciona un tipo"
-                    :options="['Perro', 'Gato']"
-                    @getInputValue="getInputValue"
+                <InputTextComponent
+                    label="Dirección"
+                    placeholder="Introduce una dirección"
+                    type="text"
+                    id="address"
+                    v-model="address"
                 />
-                <input class="btn btn-primary mt-3" type="submit" value="Agregar"/>                
+                <InputTextComponent
+                    label="Teléfono"
+                    placeholder="Introduce un teléfono"
+                    type="text"
+                    id="phone"
+                    v-model="phone"
+                />
+                <InputTextComponent
+                    label="Email"
+                    placeholder="Introduce un email"
+                    type="text"
+                    id="email"
+                    v-model="email"
+                />
+                <input class="btn btn-primary mt-3" type="submit" value="Registrar"/>
             </form>
         </div>
     </section>
@@ -89,17 +100,17 @@
 
 // Styles
 <style scoped>
-    .main-race {
+    .main-user {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
-        background-image: url("../assets/background_race.jpg");
+        background-image: url("../assets/background_user.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
     }
-    .race-form--container{
+    .user-form--container{
         min-width: 300px;
         max-width: 500px;
         width: 50%;

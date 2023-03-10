@@ -1,12 +1,14 @@
 <script >
 
   // Importing components
-  import FooterComponent from './components/FooterComponent.vue'
+  import FooterComponent from './components/FooterComponent.vue';
+  import NavbarComponent from './components/NavbarComponent.vue';
 
   export default {
     name: 'App',
     components: {
-      FooterComponent
+      FooterComponent,
+      NavbarComponent
     }
   }
 
@@ -14,6 +16,7 @@
 
 
 <template>
+  <NavbarComponent />
   
   <FooterComponent />
   

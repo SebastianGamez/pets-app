@@ -3,6 +3,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 // Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap";
 // // Create routes
 // const routes = [
 //   { path: '/', component: HomePage },

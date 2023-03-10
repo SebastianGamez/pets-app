@@ -24,7 +24,7 @@
         padding: 20px;
         width: 100%;
         height: 50px;
-        position: absolute;
+        position: relative;
         left: 0;
         bottom: 0;
     }

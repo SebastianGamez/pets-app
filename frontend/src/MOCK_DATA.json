@@ -1,0 +1,62 @@
+[
+    {
+      "id": 1,
+      "img": "https://images.pexels.com/photos/2023384/pexels-photo-2023384.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "name": "Max",
+      "specie": "Perro",
+      "breed": "Labrador",
+      "gender": "Macho",
+      "color": "Negro",
+      "age": "5 meses",
+      "description": "Poco juguetón, amigable, calmado",
+      "status": true
+    },
+    {
+      "id": 2,
+      "img": "https://images.unsplash.com/photo-1568572933382-74d440642117?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
+      "name": "Lucas",
+      "specie": "Perro",
+      "breed": "Labrador",
+      "gender": "Macho",
+      "color": "Negro",
+      "age": "7 meses",
+      "description": "Poco juguetón, amigable, calmado",
+      "status": true
+    },
+    {
+      "id": 3,
+      "img": "https://images.pexels.com/photos/220938/pexels-photo-220938.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "name": "Tobi",
+      "specie": "Perro",
+      "breed": "Labrador",
+      "gender": "Macho",
+      "color": "Negro",
+      "age": "3 meses",
+      "description": "Poco juguetón, amigable, calmado",
+      "status": true
+    },
+    {
+      "id": 4,
+      "img": "https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "name": "Félix",
+      "specie": "Perro",
+      "breed": "Labrador",
+      "gender": "Macho",
+      "color": "Negro",
+      "age": "9 meses",
+      "description": "Poco juguetón, amigable, calmado",
+      "status": true
+    },
+    {
+      "id": 5,
+      "img": "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+      "name": "Pachecho",
+      "specie": "Gato",
+      "breed": "Criollo",
+      "gender": "Macho",
+      "color": "Gris",
+      "age": "5 meses",
+      "description": "Poco juguetón, amigable, altivo",
+      "status": true
+    }
+  ]

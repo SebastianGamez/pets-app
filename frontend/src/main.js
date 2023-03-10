@@ -8,12 +8,15 @@ import { createRouter, createWebHistory } from 'vue-router';
 import RacePage from './pages/RacePage.vue';
 // Import UserPage component
 import UserPage from './pages/UserPage.vue';
+// Import GiveUpAdoptionPage component
+import GiveUpAdoptionPage from './pages/GiveUpAdoptionPage.vue';
 // Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 // Create routes
 const routes = [
   { path: '/race', component: RacePage },
   { path: '/user', component: UserPage },
+  { path: '/give-up-adoption', component: GiveUpAdoptionPage }
 ]
 // Create the router
 const router = createRouter({

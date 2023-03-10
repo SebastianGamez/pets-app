@@ -1,4 +1,4 @@
-// Description: This file contain the race page
+// Description: This file contains the user page
 // Author: Sebastián Gámez Ariza
 
 <script>

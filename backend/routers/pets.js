@@ -26,7 +26,7 @@ petsRouter.get('/:id',async(req,res)=>{
         res.json(pet);
     }else{
         res.status(404);
-        res.json({error:`No se encontró ningún usuario con el id:${petId}`});
+        res.json({error:`No se encontró ninguna mascota con el id:${petId}`});
     }
 });
 
@@ -53,7 +53,7 @@ petsRouter.put('/:id',async(req,res)=>{
         res.json({success:'Se ha modificado correctamente'});
     }else{
         res.status(404);
-        res.json({error:`No se encontró ningún usuario con el id:${petId}`});
+        res.json({error:`No se encontró ninguna mascota con el id:${petId}`});
     }
   
 });
@@ -69,7 +69,7 @@ petsRouter.delete('/:id',async(req,res)=>{
         res.json({success:'Se ha borrado la mascota exitosamente'});
     }else{
         res.status(404);
-        res.json({error:`No se encontró ningún usuario con el id:${petId}`});
+        res.json({error:`No se encontró ninguna mascota con el id:${petId}`});
     }
    
 });

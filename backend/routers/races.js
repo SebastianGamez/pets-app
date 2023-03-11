@@ -6,12 +6,12 @@ const {Races}=require('../db.js');
 
 //Función para validar si un registro existe con el id que le pasamos.
 //Esto es exclusivo del método PUT y DELETE.
-const validateIfExists=async(petId)=>{
-    const pet=await Races.findOne({where:{id: petId}});
+const validateIfExists=async(raceId)=>{
+    const pet=await Races.findOne({where:{id: raceId}});
     return (pet)?true:false;
 }
 
-//Lo que llegue hasta aquí ya va a tener la ruta '/api/v1/'
+//Lo que llegue hasta aquí ya va a tener la ruta '/api/v1/races'
 //GET
 racesRouter.get('/',async(req,res)=>{
     const races=await  Races.findAll();

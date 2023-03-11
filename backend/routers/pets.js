@@ -11,7 +11,7 @@ const validateIfExists=async(petId)=>{
     const pet=await Pets.findOne({where:{id: petId}});
     return (pet)?true:false;
 }
-//Lo que llegue hasta aquí ya va a tener la ruta '/api/v1/'
+//Lo que llegue hasta aquí ya va a tener la ruta '/api/v1/pets'
 //GET
 petsRouter.get('/',async(req,res)=>{
     const pets=await  Pets.findAll();

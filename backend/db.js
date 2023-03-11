@@ -2,7 +2,7 @@
 //Al exportar este archivo también se exportan los modelos de la aplicación.
 
 //1. IMPORTO SEQUELIZE A MI PROYECTO Y LO INSTANCIO
-const Sequelize=require('sequelize');
+const {Sequelize}=require("sequelize");
                             //(name_DB,usuario,contraseña)
 const sequelize=new Sequelize('heroku_93abceb55484337','b74ca5f74baad0','623373b1',{
     host:'us-cdbr-east-06.cleardb.net',
@@ -11,7 +11,6 @@ const sequelize=new Sequelize('heroku_93abceb55484337','b74ca5f74baad0','623373b
 
 //2.TRAIGO MIS MODELOS PREVIAMENTE CREADOS EN UN FICHERO DE LA CARPETA MODELS.
 //NOTA: Como lo tengo definido como una func8ión, acá debo ejecutarla pasándole los parámetros que requiere.
-
 
 
 

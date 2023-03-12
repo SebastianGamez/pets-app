@@ -2,21 +2,26 @@ const router = require("express").Router();
 const { request } = require("express");
 const { Adoptions } = require("../db.js");
 
-//Obtener 
-router.get('/', (req, res) => {
-    res.json([]);
+//Obtener todos
+router.get('/',async (req, res) => {
+    const adoptions = await Adoptions.findAll();
+    res.json(adoptions);
 });
 
-//Un solo usuario
-router.get('/:id', (req, res) => {
+//Una sola adopcion
+router.get('/:id',async (req, res) => {
     const { id } = req.params;
-    res.json({
-        id,
-    });
+    const adoption= await Adoptions.findOne({where:{id}});
+    res.json(adoption);
 });
 
 //Crear una adopcion
 router.post('/', async (req, res) => {
+    const {petId, userId}=req.body;
+    if (!petId|| !userId) {
+        res.status(400).json("Faltan parametros");
+        return;
+    }
     const adoption = await Adoptions.create(req.body);
     res.json(adoption);
 });

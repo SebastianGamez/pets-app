@@ -4,6 +4,8 @@ import { createApp } from 'vue';
 import App from './App.vue';
 // Import the createRouter function
 import { createRouter, createWebHistory } from 'vue-router';
+// Import the LandingPage component
+import LandingPage from './pages/LandingPage.vue';
 // Import the RacePage component
 import RacePage from './pages/RacePage.vue';
 // Import UserPage component
@@ -15,6 +17,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
 // Create routes
 const routes = [
+    { path: '/', component: LandingPage },
   { path: '/race', component: RacePage },
   { path: '/user', component: UserPage },
   { path: '/give-up-adoption', component: GiveUpAdoptionPage }

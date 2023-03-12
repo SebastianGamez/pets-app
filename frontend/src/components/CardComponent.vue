@@ -9,7 +9,9 @@ import fetchDataHelper from '../helpers/fetchDataHelper.js';
             race: String,
             age: String,
             description: String,
-            img: String,
+            image: String,
+            type: String,
+
         },
         methods:{
             adopt(){
@@ -38,10 +40,10 @@ import fetchDataHelper from '../helpers/fetchDataHelper.js';
 </script>
 <template>
         <div class="card d-block" style="width: 18rem;" :id="id">
-            <img :src="img" class="card-img-top" :alt="name+id">
+            <img :src="image" class="card-img-top" :alt="name+id">
             <div class="card-body">
                 <h5 class="card-title d-flex justify-content-around">{{name}} <span>{{age}}</span></h5>
-                <p class="card-text">{{breed}}</p>
+                <p class="card-text">{{race}}</p>
                 <p class="card-text">{{description}}</p>
                 <div class="text-center">
                     <a href="#" class="btn btn-primary" @click.prevent="adopt">Adoptar</a>

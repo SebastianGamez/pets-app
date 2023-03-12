@@ -13,7 +13,7 @@
     <!-- Footer -->
     <footer class="footer bg-dark">
         <div class="w-100 h-100 d-flex justify-content-start align-items-center">
-            <p class="text-light"><strong class="text-light">©</strong> PetsApp <i>MMXIII</i></p>
+            <p class="text-light"><strong class="text-light">©</strong> PetsApp <i>MMXXIII</i></p>
         </div>
     </footer>
 </template>

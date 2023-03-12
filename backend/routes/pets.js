@@ -24,6 +24,7 @@ petsRouter.get('/:id',async(req,res)=>{
     if(pet){
         //Si se encontró la mascota con ese id entra aquí...
         res.json(pet);
+        console.log(pet.raceId)
     }else{
         res.status(404);
         res.json({error:`No se encontró ninguna mascota con el id:${petId}`});

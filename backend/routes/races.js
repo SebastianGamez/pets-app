@@ -18,6 +18,13 @@ racesRouter.get('/',async(req,res)=>{
     res.json(races);
 });
 
+//GET
+// Get races by specie
+racesRouter.get('/:specie',async(req,res)=>{
+    const races = await  Races.findAll({ where: { species: req.params.specie } });
+    res.json(races);
+});
+
 //POST
 racesRouter.post('/',async(req,res)=>{
     //TODO: Aquí hace falta validar el body que me envían en la petición.

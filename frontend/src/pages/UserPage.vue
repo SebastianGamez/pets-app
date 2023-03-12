@@ -27,21 +27,22 @@
             // Handle the submit event
             async handleSubmit() {
                 // Call the fetch data helper
-                const response = fetchDataHelper('', 'POST', {
+                const response = await fetchDataHelper('http://localhost:3000/api/v1/users', 'POST', {
                     name: this.name,
                     address: this.address,
                     phone: this.phone,
                     email: this.email
                 });
                 // Check if the response is ok
-                if(response.ok) {
+                if(response.status == 200) {
                     // Show a success alert
                     Swal.fire({
                         icon: 'success',
                         title: 'Usuario añadido correctamente',
                         showConfirmButton: false,
-                        timer: 1500
                     })
+                    // Redirect to the home page
+                    this.$router.push('/');
                 }
                 else {
                     // Show an error alert

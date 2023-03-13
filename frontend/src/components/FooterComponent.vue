@@ -23,8 +23,8 @@
     .footer {
         padding: 20px;
         width: 100%;
-        height: 50px;
-        position: relative;
+        height: 8vh;
+        position: fixed;
         left: 0;
         bottom: 0;
     }

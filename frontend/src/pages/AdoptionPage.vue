@@ -1,16 +1,14 @@
 <script >
 
   // Importing components
-  import CarouselComponent from '../components/CarouselComponent.vue';
   import CardComponent from '../components/CardComponent.vue';
   import fetchDataHelper from '../helpers/fetchDataHelper.js';
 
   export default {
     // Name of the component
-    name: 'App',
+    name: 'AdoptionPage',
     // Components
     components: {
-      CarouselComponent,
       CardComponent
     },
     data () {
@@ -44,12 +42,22 @@
 
 
 <template>
-  <CarouselComponent/>
-  <div class="container mt-3">
-    <div class="row row-cols-1 row-cols-md-4 g-4"> 
-      <div class="container mt-3 mb-3 d-flex" v-for="(p, index) in this.petsToAdopt">
-        <CardComponent :id="p.id" :name="p.name" :race="p.raceId" :gender="p.gender" :image= "p.image" :available="p.available" :age="p.age" :description="p.description" :createdAt="p.createdAt" :users="this.users"/>
-      </div>  
+  <section class="main-adoption">
+    <div class="container my-5 py-5">
+      <div class="row row-cols-1 row-cols-md-4 g-4"> 
+        <div class="container mt-3 mb-3 d-flex" v-for="(p, index) in this.petsToAdopt">
+          <CardComponent :id="p.id" :name="p.name" :race="p.raceId" :gender="p.gender" :image= "p.image" :available="p.available" :age="p.age" :description="p.description" :createdAt="p.createdAt" :users="this.users"/>
+        </div>  
+      </div>
     </div>
-  </div>
+  </section>
 </template>
+
+<style>
+  .main-adoption{
+    background-image: url("../assets/background_adoption.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+</style>

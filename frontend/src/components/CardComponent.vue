@@ -41,4 +41,13 @@ import ModalComponent from './ModalComponent.vue'
  .card-img-top{
     height: 400px;
  }
+
+ .card:hover {
+    transform:scale(1.05);transform:scale(1.01);
+    box-shadow:
+    inset 0 -3em 3em rgba(0,0,0,0.1),
+          0.1em 0.1em 1em rgb(57, 55, 55);  
+    border-radius: 5px; 
+    transition: 0.3s;
+  }
 </style>

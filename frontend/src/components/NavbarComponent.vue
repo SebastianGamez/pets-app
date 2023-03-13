@@ -6,7 +6,7 @@
   <template>
         <nav class="navbar navbar-dark bg-dark position-absolute w-100">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/">PetMix</a>
+                <img class="navbar-brand nav-img" src="../assets/logo.svg" href="/">
                 <ul class="nav">
                     <li class="nav-item">
                       <a class="nav-link active" aria-current="page" href="/">Home</a>
@@ -34,6 +34,11 @@
     right: 0;
     left: 0;
     z-index: 3;
+}
+
+.nav-img{
+  height: 70px;
+  width: 200px;
 }
 </style>
   

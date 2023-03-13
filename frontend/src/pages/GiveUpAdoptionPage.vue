@@ -113,7 +113,7 @@
                 <InputTextComponent
                     label="Edad"
                     id="age"
-                    placeholder="Introduce una edad"
+                    placeholder="Introduce una edad(meses)"
                     type="number"
                     v-model="age"
                 />

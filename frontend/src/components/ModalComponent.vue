@@ -31,37 +31,46 @@ import fetchDataHelper from '../helpers/fetchDataHelper.js';
                     }).then((result) => {
                         // If is confirmed
                     if (result.isConfirmed){
-                        //Update pet status
-                        fetchDataHelper(`http://localhost:3000/api/v1/pets/${this.id}`, 'PUT', {
-                            name: this.name,
-                            gender: this.gender,
-                            raceId: this.race,
-                            age: this.age,
-                            image: this.image,
-                            description: this.description,
-                            available: false,
-                            createdAt: this.createdAt,
-                            updatedAt: this.getDate()
-                        });
-                        //Generate adoption's data
-                        fetchDataHelper('http://localhost:3000/api/v1/adoptions', 'POST', {
-                            petId: this.id,
-                            userId: this.email,
-                            createdAt: this.createdAt,
-                            updatedAt: this.getDate()
-                        })
-                        //Timer to confirm adoption success
+                        if(this.email != null && this.email != '' && this.email != 'Email'){
+                            //Update pet status
+                            fetchDataHelper(`http://localhost:3000/api/v1/pets/${this.id}`, 'PUT', {
+                                name: this.name,
+                                gender: this.gender,
+                                raceId: this.race,
+                                age: this.age,
+                                image: this.image,
+                                description: this.description,
+                                available: false,
+                                createdAt: this.createdAt,
+                                updatedAt: this.getDate()
+                            });
+                            //Generate adoption's data
+                            fetchDataHelper('http://localhost:3000/api/v1/adoptions', 'POST', {
+                                petId: this.id,
+                                userId: this.email,
+                                createdAt: this.createdAt,
+                                updatedAt: this.getDate()
+                            })
+                            //Timer to confirm adoption success
                             Swal.fire({
                                 icon: 'success',
-                                title: '¡Mascota dada en adopción!',
-                                text: 'La mascota ha sido dada en adopción correctamente',
+                                title: '¡Mascota adoptada correctamente!',
+                                text: 'La mascota ha sido adoptada con éxito.',
                                 confirmButtonText: 'Aceptar',
                                 timer: 1800
                             }, );
                             setTimeout(function() {
                                 location.reload();
                             }, 2000);
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: '¡Error!',
+                                text: 'Seleccione un email válido',
+                                confirmButtonText: 'Aceptar'
+                            });
                         }
+                     }
                 })
             },
             getDate(){
@@ -86,7 +95,7 @@ import fetchDataHelper from '../helpers/fetchDataHelper.js';
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <select class="form-select" aria-label="Default select example" v-model="email">
+                <select class="form-select" aria-label="Default select example" v-model="email" required>
                     <option selected>Email</option>
                     <option v-for="(u, index) in users" :value="u.id" >{{u.email}}</option>
                 </select>

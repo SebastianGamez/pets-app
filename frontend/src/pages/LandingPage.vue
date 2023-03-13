@@ -47,7 +47,7 @@
   <CarouselComponent/>
   <div class="container mt-3">
     <div class="row row-cols-1 row-cols-md-4 g-4"> 
-      <div class="container mt-3 mb-3 d-flex" v-for="(p, index) in this.petsToAdopt">
+      <div class="container mt-3 mb-3 d-flex justify-content-center" v-for="(p, index) in this.petsToAdopt">
         <CardComponent :id="p.id" :name="p.name" :race="p.raceId" :gender="p.gender" :image= "p.image" :available="p.available" :age="p.age" :description="p.description" :createdAt="p.createdAt" :users="this.users"/>
       </div>  
     </div>

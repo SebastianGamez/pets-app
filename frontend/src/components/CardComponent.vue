@@ -1,55 +1,41 @@
 
 <script>
-import fetchDataHelper from '../helpers/fetchDataHelper.js';
+import ModalComponent from './ModalComponent.vue'
     export default {
         name: 'CardComponent',
+        components: {
+            ModalComponent
+        },
         props: {
             id: Number,
             name: String, 
-            race: String,
-            age: String,
+            race: Number,
+            age: Number,
             description: String,
             image: String,
-            type: String,
-
+            gender: String,
+            createdAt: String,
+            users: Array
         },
-        methods:{
-            adopt(){
-                Swal.fire({
-                    title: `¿Estás seguro que deseas adoptar a ${this.arrayPets[index].name}?`,
-                    showDenyButton: true,
-                    confirmButtonText: `Confirmar`,
-                    denyButtonText: `Seguir buscando`,
-                    }).then((result) => {
-                    if (result.isConfirmed){
-                        fetchDataHelper(``, 'PUT', {
-                            name: this.name,
-                            type: this.type,
-                            gender: this.gender,
-                            race: this.race,
-                            age: this.age,
-                            image: this.image,
-                            description: this.description,
-                            state: true
-                        })
-                    }
-                })
-            }
-        }
     };
 </script>
 <template>
+    <!-- Modal -->
+        <ModalComponent :id="id" :name="name" :race="race" :age="age" :description="description" :image="image" :gender="gender" :createdAt="createdAt" :users="users"/>
+    <!-- Modal -->
+    <!-- Card -->
         <div class="card d-block" style="width: 18rem;" :id="id">
             <img :src="image" class="card-img-top" :alt="name+id">
             <div class="card-body">
-                <h5 class="card-title d-flex justify-content-around">{{name}} <span>{{age}}</span></h5>
-                <p class="card-text">{{race}}</p>
+                <h5 class="card-title d-flex justify-content-around">{{name}} <span>{{age}} meses</span></h5>
+                <p class="card-text"><span>{{gender}}</span></p>
                 <p class="card-text">{{description}}</p>
                 <div class="text-center">
-                    <a href="#" class="btn btn-primary" @click.prevent="adopt">Adoptar</a>
+                    <a href="#" class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Adoptar</a>
                 </div>
             </div>
         </div>
+    <!-- Card -->
 </template>
 <style>
  .card-img-top{

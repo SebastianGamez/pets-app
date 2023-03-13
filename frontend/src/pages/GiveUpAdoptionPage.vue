@@ -10,6 +10,7 @@
     // Import fetch data helper
     import fetchDataHelper from '../helpers/fetchDataHelper';
     // Import sweet alert 2
+    import Swal from 'sweetalert2';
 
     export default {
         name: 'GiveUpAdoption',
@@ -23,19 +24,22 @@
                 name: '',
                 type: '',
                 gender: '',
-                race: '',
+                race: {},
                 age: '',
                 image: '',
                 description: '',
-                state: false,
+                state: true,
                 // Races
                 races: []
             }   
         },
         // Watchers
         watch: {
-            type(){
-                fetchDataHelper('', 'GET', {}).then( ({data}) => this.options = data );
+            type: {
+                handler(){
+                    fetchDataHelper(`http://localhost:3000/api/v1/races/${this.type}`, 'GET', {}).then( ({data}) => this.races = data );
+                },
+                immediate: true
             }
         },
         // Methods
@@ -46,24 +50,38 @@
                     this.type = value;
                 }
                 else if(id === 'race'){
-                    this.race = value;
+                    this.race = this.races.find( race => race.name === value );
+                }
+                else if(id === 'gender'){
+                    this.gender = value;
+                }
+            },
+            // Set picture
+            setPicture() {
+                if(this.image === ''){
+                    if(this.type === 'Perro')
+                        this.image = 'https://images.pexels.com/photos/2023384/pexels-photo-2023384.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
+                    else if(this.type === 'Gato'){
+                        this.image = 'https://images.pexels.com/photos/3512792/pexels-photo-3512792.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
+                    }
                 }
             },
             // Handle the submit event
             async handleSubmit() {
+                // Set the picture if the user doesn't upload one
+                this.setPicture();
                 // Call the fetch data helper
-                const response = fetchDataHelper('', 'POST', {
+                const response = await fetchDataHelper('http://localhost:3000/api/v1/pets', 'POST', {
                     name: this.name,
-                    type: this.type,
                     gender: this.gender,
-                    race: this.race,
                     age: this.age,
-                    image: this.image,
                     description: this.description,
-                    state: this.state
+                    image: this.image,
+                    available: this.state,
+                    raceId: this.race.id,
                 });
                 // Check if the response is ok
-                if(response.ok) {
+                if(response.status == 200) {
                     // Show a success alert
                     Swal.fire({
                         icon: 'success',
@@ -93,7 +111,7 @@
             <h2 class="title-title--giveUpAdoption text-light text-center">Dar en adopción</h2>
         </div>
         <div class="giveUpAdoption-form--container rounded border d-flex flex-column justify-content-center align-items-center">
-            <form @submit.prevent="handleSubmit" class="form-form d-flex flex-column py-3">
+            <form @submit.prevent="handleSubmit" class="form-form d-flex flex-column">
                 <!-- Name input -->
                 <InputTextComponent
                     label="Nombre"
@@ -101,13 +119,7 @@
                     type="text"
                     id="name"
                     v-model="name"
-                />
-                <!-- Gender input -->
-                <InputTextComponent
-                    label="Sexo"
-                    id="gender"
-                    placeholder="Selecciona un género"
-                    v-model="gender"
+                    style="margin-top: 180px;"
                 />
                 <!-- Age input -->
                 <InputTextComponent
@@ -119,9 +131,9 @@
                 />
                 <!-- Image input -->
                 <InputTextComponent
-                    label="Imagen"
+                label="Imagen"
                     id="image"
-                    placeholder="Introduce una url"
+                    placeholder="(URL) Dejar vacío para default"
                     type="text"
                     v-model="image"
                 />
@@ -132,6 +144,15 @@
                     placeholder="Introduce una descripción"
                     type="text"
                     v-model="description"
+                />
+                <!-- Gender input -->
+                <SelectInputComponent
+                    label="Sexo"
+                    id="gender"
+                    type="text"
+                    placeholder="Selecciona un género"
+                    :options="['Macho', 'Hembra']"
+                    @getInputValue="getInputValue"
                 />
                 <!-- Type input -->
                 <SelectInputComponent
@@ -146,7 +167,7 @@
                     label="Raza"
                     id="race"
                     placeholder="Selecciona una raza"
-                    :options="races"
+                    :options="races.map(race => race.name)" 
                     @getInputValue="getInputValue"
                 />
 
@@ -163,7 +184,7 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
-        background-image: url("../assets/background_race.jpg");
+        background-image: url("../assets/background_giveUpAdoption.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;

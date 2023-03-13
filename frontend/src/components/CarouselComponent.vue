@@ -16,21 +16,21 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="https://images.pexels.com/photos/7725618/pexels-photo-7725618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block w-100 img-carousel" alt="...">
-            <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-caption d-none d-md-block mb-5">
               <h5>Adopción</h5>
               <p>A continuación podrás ver las mascotas que esperan por ti.</p>
             </div>
           </div>
           <div class="carousel-item">
             <img src="https://images.pexels.com/photos/7726294/pexels-photo-7726294.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block w-100 img-carousel" alt="...">
-            <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-caption d-none d-md-block mb-5">
               <h5>Poner en adopción</h5>
               <p>Bríndale a tu mascota un nuevo hogar. ¡Nosotros te ayudamos!</p>
             </div>
           </div>
           <div class="carousel-item">
             <img src="https://images.pexels.com/photos/8498519/pexels-photo-8498519.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block w-100 img-carousel" alt="...">
-            <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-caption d-none d-md-block mb-5">
               <h5>Fundación sin ánimo de lucro</h5>
               <p>Todo para regresar el amor que ellos nos brindan.</p>
             </div>

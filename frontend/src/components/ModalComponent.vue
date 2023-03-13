@@ -7,41 +7,69 @@ import fetchDataHelper from '../helpers/fetchDataHelper.js';
         props: {
             id: Number,
             name: String, 
-            race: String,
-            age: String,
+            race: Number,
+            age: Number,
             description: String,
             image: String,
+            gender: String,
+            createdAt: String,
             users: Array
         },
         data(){
             return{
-                petName: this.name,
+                email: ''
             }
         },
         methods:{
-            adopt(){
+           adopt(){
+                // Confirmation message
                 Swal.fire({
-                    title: `¿Estás seguro que deseas adoptar a ${this.petName}?`,
+                    title: `¿Estás seguro que deseas adoptar a ${this.name}?`,
                     showDenyButton: true,
                     confirmButtonText: `Confirmar`,
                     denyButtonText: `Seguir buscando`,
                     }).then((result) => {
+                        // If is confirmed
                     if (result.isConfirmed){
-                        fetchDataHelper(``, 'PUT', {
+                        //Update pet status
+                        fetchDataHelper(`http://localhost:3000/api/v1/pets/${this.id}`, 'PUT', {
                             name: this.name,
-                            type: this.type,
                             gender: this.gender,
-                            race: this.race,
+                            raceId: this.race,
                             age: this.age,
                             image: this.image,
                             description: this.description,
-                            state: true
+                            available: false,
+                            createdAt: this.createdAt,
+                            updatedAt: this.getDate()
                         });
-                        fetchDataHelper('', 'POST', {
-
+                        //Generate adoption's data
+                        fetchDataHelper('http://localhost:3000/api/v1/adoptions', 'POST', {
+                            petId: this.id,
+                            userId: this.email,
+                            createdAt: this.createdAt,
+                            updatedAt: this.getDate()
                         })
-                    }
+                        //Timer to confirm adoption success
+                            Swal.fire({
+                                icon: 'success',
+                                title: '¡Mascota dada en adopción!',
+                                text: 'La mascota ha sido dada en adopción correctamente',
+                                confirmButtonText: 'Aceptar',
+                                timer: 1800
+                            }, );
+                            setTimeout(function() {
+                                location.reload();
+                            }, 2000);
+                        }
                 })
+            },
+            getDate(){
+                let date = new Date();
+                let d = date.getDate();
+                let m = date.getMonth() + 1;
+                let y = date.getFullYear();
+                return `${d}/${m}/${y}`;
             }
         }
     }
@@ -58,9 +86,9 @@ import fetchDataHelper from '../helpers/fetchDataHelper.js';
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" aria-label="Default select example" v-model="email">
                     <option selected>Email</option>
-                    <option v-for="(u, index) in users" :value="u.id">{{u.email}}</option>
+                    <option v-for="(u, index) in users" :value="u.id" >{{u.email}}</option>
                 </select>
             </div>
             <div class="modal-footer">

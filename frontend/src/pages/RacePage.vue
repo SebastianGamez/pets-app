@@ -10,6 +10,7 @@
     // Import fetch data helper
     import fetchDataHelper from '../helpers/fetchDataHelper';
     // Import sweet alert 2
+    import Swal from 'sweetalert2';
 
     export default {
         name: 'RacePage',
@@ -31,18 +32,17 @@
             // Handle the submit event
             async handleSubmit() {
                 // Call the fetch data helper
-                const response = fetchDataHelper('', 'POST', {
+                const response = await fetchDataHelper('http://localhost:3000/api/v1/races', 'POST', {
                     name: this.name,
-                    type: this.type
+                    species: this.type
                 });
                 // Check if the response is ok
-                if(response.ok) {
+                if(response.status == 200) {
                     // Show a success alert
                     Swal.fire({
                         icon: 'success',
                         title: 'Raza añadida correctamente',
                         showConfirmButton: false,
-                        timer: 1500
                     })
                     // Redirect to the home page
                     this.$router.push('/');

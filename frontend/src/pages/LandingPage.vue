@@ -4,7 +4,6 @@
   import CarouselComponent from '../components/CarouselComponent.vue';
   import CardComponent from '../components/CardComponent.vue';
   import fetchDataHelper from '../helpers/fetchDataHelper.js';
-  import data from '../MOCK_DATA.json';
 
   export default {
     // Name of the component
@@ -16,24 +15,30 @@
     },
     data () {
       return{
-        pets:data,
-        users: []
+        pets:[],
+        users: [],
       }
     },
     methods:{
-      getData(){
-        // const response = fetchDataHelper('', 'GET', {});
-        //   this.pets = response;
+      async getData(){
+        const response = await fetchDataHelper('http://localhost:3000/api/v1/pets', 'GET', {});
+        this.pets = response.data;
       },
-      getUsers(){
-        const response = fetchDataHelper('', 'GET', {});
-          this.users = response;
+      async getUsers(){
+        const response = await fetchDataHelper('http://localhost:3000/api/v1/users', 'GET', {});
+          this.users = response.data;
       }
     },
-    mounted(){
+    computed: {
+      petsToAdopt(){
+        return this.pets.filter( p => p.available === true)
+      }
+    },
+    created(){
       this.getData()
       this.getUsers()
-    }
+    },
+    
   }
 </script>
 
@@ -42,8 +47,8 @@
   <CarouselComponent/>
   <div class="container mt-3">
     <div class="row row-cols-1 row-cols-md-4 g-4"> 
-      <div class="container mt-3 d-flex" v-for="(p, index) in this.pets">
-      <CardComponent :id="p.id" :name="p.name" :type="p.type" :race="p.race" :gender="p.gender" :image= "p.image" :age="p.age" :description="p.description" :users="this.users"/>
+      <div class="container mt-3 mb-3 d-flex" v-for="(p, index) in this.petsToAdopt">
+        <CardComponent :id="p.id" :name="p.name" :race="p.raceId" :gender="p.gender" :image= "p.image" :available="p.available" :age="p.age" :description="p.description" :createdAt="p.createdAt" :users="this.users"/>
       </div>  
     </div>
   </div>
